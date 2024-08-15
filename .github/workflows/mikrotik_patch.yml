@@ -160,6 +160,7 @@ jobs:
     - name: Create install-image-${{ env.LATEST_VERSION }}.img
       run: |
         sudo modprobe nbd
+        sudo apt-get update
         sudo apt-get install -y qemu-utils extlinux > /dev/null
         sudo xxd -p -u /usr/bin/extlinux | tr -d '\n' | sed  \
           -e 's/0D0A5359534C494E555820362E30342000/4C6F6164696E672073797374656D0D0A00/g' \
